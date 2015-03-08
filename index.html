@@ -1,0 +1,26 @@
+<!DOCTYPE HTML>
+<html >
+<head>
+	<script src="https://code.angularjs.org/1.3.9/angular.js"></script>
+	<script src="financeApp.js"></script>
+	<title>Bill Calculator </title>
+</head>
+<body>
+	<div ng-app="financeApp" ng-controller="InvoiceController as invoice" >
+		<b>Invoice: {{1+1}}</b>
+		<div>
+			Quentity:<input type="number" min="0" ng-model="invoice.qty" required>
+		</div>
+		<div>
+			Costs: <input type="number" min="0" ng-model="invoice.cost" required>
+			<select ng-model="invoice.inCurr">
+				<option ng-repeat="c in invoice.currencies">{{c}}</option>
+			</select>
+		</div>
+		<span ng-repeat="c in invoice.currencies">
+      		{{invoice.total(c) | currency:c}}
+    	</span>
+	</div>
+
+</body>
+</html>
